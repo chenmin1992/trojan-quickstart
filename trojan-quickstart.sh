@@ -22,7 +22,11 @@ if [[ $(uname -m 2> /dev/null) != x86_64 ]]; then
 fi
 
 NAME=trojan
-VERSION=$(curl -fsSL https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | sed -E 's/.*"v(.*)".*/\1/')
+if [ -z $1 ]; then
+    VERSION=$(curl -fsSL https://api.github.com/repos/trojan-gfw/$NAME/releases/latest | grep tag_name | sed -E 's/.*"v(.*)".*/\1/')
+else
+    VERSION=$1
+fi
 TARBALL="$NAME-$VERSION-linux-amd64.tar.xz"
 DOWNLOADURL="https://github.com/trojan-gfw/$NAME/releases/download/v$VERSION/$TARBALL"
 TMPDIR="$(mktemp -d)"
