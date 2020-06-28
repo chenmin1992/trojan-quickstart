@@ -23,12 +23,12 @@ fi
 
 NAME=trojan
 if [ -z $1 ]; then
-    VERSION=$(curl -fsSL https://api.github.com/repos/trojan-gfw/$NAME/releases/latest | grep tag_name | sed -E 's/.*"v(.*)".*/\1/')
+    VERSION=$(curl -fsSL https://api.github.com/repos/chenmin1992/$NAME/releases/latest | grep tag_name | sed -E 's/.*"v(.*)".*/\1/')
 else
     VERSION=$1
 fi
 TARBALL="$NAME-$VERSION-linux-amd64.tar.xz"
-DOWNLOADURL="https://github.com/trojan-gfw/$NAME/releases/download/v$VERSION/$TARBALL"
+DOWNLOADURL="https://github.com/chenmin1992/$NAME/releases/download/v$VERSION/$TARBALL"
 TMPDIR="$(mktemp -d)"
 INSTALLPREFIX=/usr/local
 SYSTEMDPREFIX=/etc/systemd/system
